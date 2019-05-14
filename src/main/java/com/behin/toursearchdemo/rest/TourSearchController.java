@@ -25,7 +25,6 @@ import org.springframework.web.filter.CorsFilter;
  */
 @RestController
 public class TourSearchController {
-    ElasticConnection connection;
     private static final SentenceRecommenderSystem sentenceRS = new SentenceRecommenderSystem();
     @CrossOrigin(origins = "127.0.0.1:8080")
     @Bean
@@ -78,13 +77,6 @@ public class TourSearchController {
      * @param hotelId
      * @return hotel info
      */
-    @RequestMapping("/MyGetHotelInfo")
-    public Map<String, Object> mygetHotelInfo(@RequestParam(value = "hotelId", defaultValue = "11111") String hotelID){
-         connection=new ElasticConnection();
-        
-        Map<String, Object> result1=connection.elastic();
-        return result1;
-    }
     @RequestMapping("/GetHotelInfo")
     public String getHotelInfo(@RequestParam(value = "hotelId", defaultValue = "11111") String hotelID){
         String result = "";
