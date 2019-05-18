@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.behin.toursearchdemo.elastic;
-
-import java.util.List;
+package Model;
 
 /**
  *
  * @author bamika
  */
-//@Data
-public class ProfileDocument {
+import lombok.Data;
 
+/**
+ *
+ * @author bamika
+ */
+@Data
+public class Hotel {
     private int    hoteh_id;
     private String hotel_name;
     private int    hotel_rank;
