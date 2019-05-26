@@ -6,70 +6,81 @@
 package Model;
 
 /**
- *
  * @author bamika
  */
+
 import lombok.Data;
+
+import java.util.List;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  *
  * @author bamika
  */
+
 @Data
 public class Hotel {
-    private int    hoteh_id;
-    private String hotel_name;
-    private int    hotel_rank;
-    private int    hotel_phon;
-    private String hotel_description;
-    private String hotel_address;
 
-    public int getHoteh_id() {
-        return hoteh_id;
+    private String hotelId;
+    private String hotelName;
+    private int hotelRank;
+    private int hotelPhon;
+    private String hotelDescription;
+    private HotelAddress hotelAddress;
+    private List<String> imagePath = null;
+
+    public String getHotelId() {
+        return hotelId;
     }
 
-    public void setHoteh_id(int hoteh_id) {
-        this.hoteh_id = hoteh_id;
+    public void setHotelId(String hotelId) {
+        this.hotelId = hotelId;
     }
 
-    public String getHotel_name() {
-        return hotel_name;
+    public String getHotelName() {
+        return hotelName;
     }
 
-    public void setHotel_name(String hotel_name) {
-        this.hotel_name = hotel_name;
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
     }
 
-    public int getHotel_rank() {
-        return hotel_rank;
+    public int getHotelRank() {
+        return hotelRank;
     }
 
-    public void setHotel_rank(int hotel_rank) {
-        this.hotel_rank = hotel_rank;
+    public void setHotelRank(int hotelRank) {
+        this.hotelRank = hotelRank;
     }
 
-    public int getHotel_phon() {
-        return hotel_phon;
+    public int getHotelPhon() {
+        return hotelPhon;
     }
 
-    public void setHotel_phon(int hotel_phon) {
-        this.hotel_phon = hotel_phon;
+    public void setHotelPhon(int hotelPhon) {
+        this.hotelPhon = hotelPhon;
     }
 
-    public String getHotel_description() {
-        return hotel_description;
+    public String getHotelDescription() {
+        return hotelDescription;
     }
 
-    public void setHotel_description(String hotel_description) {
-        this.hotel_description = hotel_description;
+    public void setHotelDescription(String hotelDescription) {
+        this.hotelDescription = hotelDescription;
     }
 
-    public String getHotel_address() {
-        return hotel_address;
-    }
+    public HotelAddress getHotelAddress() { return hotelAddress; }
 
-    public void setHotel_address(String hotel_address) {
-        this.hotel_address = hotel_address;
+    public void setHotelAddress(HotelAddress hotelAddress) {this.hotelAddress = hotelAddress; }
+
+
+    public List<String> getImagePath() { return imagePath; }
+
+    public void setImagePath(List<String> imagePath) {
+        this.imagePath = imagePath;
     }
 
 }

@@ -7,8 +7,15 @@ package com.behin.toursearchdemo.rest;
 
 import Model.Hotel;
 import java.util.List;
+
+import org.elasticsearch.action.get.GetRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,25 +25,57 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ElasticController {
-   private final ElasticService service;
+
+
+    private final ElasticService service;
 //
+
     @Autowired
     public ElasticController(ElasticService service) {
-       this.service = service;
+        this.service = service;
     }
+//
     @RequestMapping("/test")
-     public String test() {
+    public String test() {
 
         return "Success";
     }
-     @GetMapping("/test2")
-      public String test2() {
 
-        return "Success";
+    @GetMapping("/test2")
+    public String test2() {
+
+        return "full";
     }
-      @GetMapping
+
+//    //=================================================================
+//    @PostMapping
+//    public void createProfileDocument() throws Exception {
+//        service.createProfileDocument();
+//    }
+//
+////    //==================================================================
+//    @PutMapping
+//    public ResponseEntity insertProfile(@RequestBody Hotel document) throws Exception {
+//        service.insertHotel(document);
+//        return new ResponseEntity(service.insertHotel(document), HttpStatus.CREATED);
+////        service.insertHotel(document);
+//    }
+//
+//    //==================================================================
+    @GetMapping("/find")
     public List<Hotel> findAll() throws Exception {
 
         return service.findAll();
-    } 
+    }
+////    //==================================================================
+//    public Hotel HotelSearch(String id) throws Exception {
+//
+//            GetRequest getRequest = new GetRequest(INDEX, TYPE, id);
+//
+//            GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);
+//            Map<String, Object> resultMap = getResponse.getSource();
+//
+//            return convertMapToProfileDocument(resultMap);
+//////
+//////    }
 }
