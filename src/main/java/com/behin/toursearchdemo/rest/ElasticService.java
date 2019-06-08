@@ -7,11 +7,6 @@ package com.behin.toursearchdemo.rest;
 
 import Model.Hotel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -21,13 +16,17 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.replication.ReplicationResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static util.Constant.INDEX;
 import static util.Constant.TYPE;
 
@@ -89,8 +88,10 @@ public class ElasticService {
     }
 //    //======================================================================
      public String insertHotel(Hotel hotel) throws Exception {
-
-
+         List<String> imagePath=new ArrayList<>();
+         imagePath.add("http://10.0.2.2:8080/img/2.jpg");
+         imagePath.add("http://10.0.2.2:8080/img/test.jpg");
+         hotel.setImagePath(imagePath);
         IndexRequest indexRequest = new IndexRequest(INDEX,TYPE,hotel.getHotelId())
                 .source(convertProfileDocumentToMap(hotel));
         IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
