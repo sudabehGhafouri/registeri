@@ -88,10 +88,7 @@ public class ElasticService {
     }
 //    //======================================================================
      public String insertHotel(Hotel hotel) throws Exception {
-         List<String> imagePath=new ArrayList<>();
-         imagePath.add("http://10.0.2.2:8080/img/2.jpg");
-         imagePath.add("http://10.0.2.2:8080/img/test.jpg");
-         hotel.setImagePath(imagePath);
+
         IndexRequest indexRequest = new IndexRequest(INDEX,TYPE,hotel.getHotelId())
                 .source(convertProfileDocumentToMap(hotel));
         IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
